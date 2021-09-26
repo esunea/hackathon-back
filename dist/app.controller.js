@@ -20,19 +20,44 @@ let AppController = class AppController {
         this.appService = appService;
     }
     getHello(body) {
-        console.log(body);
         this.appService.setDock(body);
         return this.appService.getHello();
     }
     getDock() {
         return this.appService.getDock();
     }
-    setButton() {
-        this.appService.setButton("param");
+    setButton(body, param) {
+        this.appService.setButton(body, param);
         return this.appService.getHello();
     }
-    getButton() {
-        return this.appService.getButton();
+    getButton(param) {
+        return this.appService.getButton(param);
+    }
+    setDepart(body) {
+        this.appService.setDepart(body);
+        return this.appService.getHello();
+    }
+    getDepart(param) {
+        return this.appService.getDepart(param);
+    }
+    setPorte(body) {
+        this.appService.setPorte(body);
+        return this.appService.getHello();
+    }
+    getPorte(param) {
+        return this.appService.getPorte(param);
+    }
+    getPorte2(param) {
+        return this.appService.getPorte2(param);
+    }
+    docking_incoming(body) {
+        this.appService.setDockingIncoming(body);
+    }
+    docking_incoming_check() {
+        return this.appService.getDockingIncoming();
+    }
+    docking_incoming_check2() {
+        return this.appService.getDockingIncoming2();
     }
 };
 __decorate([
@@ -49,17 +74,74 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "getDock", null);
 __decorate([
-    (0, common_1.Post)("/button"),
+    (0, common_1.Post)("/button/:id"),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", String)
 ], AppController.prototype, "setButton", null);
 __decorate([
-    (0, common_1.Get)("/button"),
+    (0, common_1.Get)("/button/:id"),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getButton", null);
+__decorate([
+    (0, common_1.Post)("/depart/set"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", String)
+], AppController.prototype, "setDepart", null);
+__decorate([
+    (0, common_1.Get)("/depart/:id"),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getDepart", null);
+__decorate([
+    (0, common_1.Post)("/porte/set"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", String)
+], AppController.prototype, "setPorte", null);
+__decorate([
+    (0, common_1.Get)("/porte/:id"),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getPorte", null);
+__decorate([
+    (0, common_1.Get)("/porte2/:id"),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getPorte2", null);
+__decorate([
+    (0, common_1.Post)("/docking/incoming"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "docking_incoming", null);
+__decorate([
+    (0, common_1.Get)("/docking/incoming"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "getButton", null);
+], AppController.prototype, "docking_incoming_check", null);
+__decorate([
+    (0, common_1.Get)("/docking/incoming/2"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "docking_incoming_check2", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
